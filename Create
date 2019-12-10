@@ -1,1 +1,109 @@
+CREATE DATABASE toursDB
+
+USE [toursDB]
+GO
+
+CREATE TABLE [dbo].[Employee](
+[id_employee] [char](15) NOT NULL,
+[Last Name] [nchar](10) NOT NULL,
+[First Name] [nchar](10) NOT NULL,
+[date of birth] [date] NOT NULL,
+[salary] [varchar](50) NOT NULL,
+[post] [nchar](15) NOT NULL,
+[address] [nchar](15) NOT NULL,
+[phone] [varchar](20) NOT NULL
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Employee
+ADD CONSTRAINT Employee_idemployee_unique UNIQUE (id_employee)
+GO
+
+USE [toursDB]
+GO
+
+
+CREATE TABLE [dbo].[Orders](
+[id_order] [varchar](20) NOT NULL,
+[id tour] [varchar](20) NOT NULL,
+[id_employee] [char](15) NOT NULL,
+[id_client] [varchar](20) NOT NULL,
+[date of issue] [date] NOT NULL
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Orders
+ADD CONSTRAINT orders_idorder_unique UNIQUE (id_order)
+GO
+
+USE [toursDB]
+GO
+ 
+ 
+CREATE TABLE [dbo].[Client](
+[id_client] [varchar](20) NOT NULL,
+[First Name] [nchar](10) NOT NULL,
+[Last Name] [nchar](10) NOT NULL,
+[Date of birth] [date] NOT NULL,
+[phone_nubmer] [varchar](20) NOT NULL,
+[E-mail] [varchar](50) NOT NULL
+) ON [PRIMARY]
+ 
+GO
+ 
+ALTER TABLE Client
+ADD CONSTRAINT client_idclient_unique UNIQUE (id_client)
+GO
+ 
+ALTER TABLE Client
+ADD CONSTRAINT client_phonenumber_unique UNIQUE (phone_number)
+GO
+ 
+ALTER TABLE Client
+ADD CONSTRAINT client_email_unique UNIQUE (E-mail)
+GO
+
+USE [toursDB]
+GO
+ 
+CREATE TABLE [dbo].[Sale](
+[n_sale] [varchar](20) NOT NULL,
+[id_client] [varchar](20) NOT NULL,
+[id_tour] [varchar](50) NOT NULL,
+[date] [date] NOT NULL,
+[Quantity] [varchar](20) NOT NULL,
+[id_employee] [char](15) NOT NULL
+) ON [PRIMARY]
+ 
+GO
+ 
+ALTER TABLE Sale
+ADD CONSTRAINT sale_nsale_unique UNIQUE (n_sale)
+GO
+ 
+ 
+USE [toursDB]
+GO
+ 
+CREATE TABLE [dbo].[Tour](
+[id_tour] [varchar](50) NOT NULL,
+[id services] [varchar](50) NOT NULL,
+[Country] [nvarchar](50) NOT NULL,
+[City] [nvarchar](50) NOT NULL
+[name tour] [nvarchar](50) NOT NULL,
+[name Hotel] [varchar](20) NOT NULL,
+[Price] [varchar](20) NOT NULL,
+[transpot including] [varchar](20) NULL,
+[Food] [nvarchar](50) NOT NULL,
+) ON [PRIMARY]
+ 
+GO
+ 
+ALTER TABLE Tour
+ADD CONSTRAINT tour_idtour_unique UNIQUE (id_tour)
+GO
+ 
+
 
