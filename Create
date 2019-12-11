@@ -106,4 +106,63 @@ ADD CONSTRAINT tour_idtour_unique UNIQUE (id_tour)
 GO
  
 
+'Зв'язки'
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Orders
+add constraint PK_orders
+primary key(id_client) 
+GO
+
+
+ALTER TABLE Client
+add constraint FK_orderss
+foreign key (id_client) references Orders (id_client) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Employee
+add constraint PK_employe
+primary key(id_employee) 
+GO
+
+
+ALTER TABLE Orders
+add constraint FK_employ
+foreign key (id_employee) references Employee (id_employee) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Tour
+add constraint PK_tour
+primary key(id_tour) 
+GO
+
+
+ALTER TABLE Orders
+add constraint FK_orderst
+foreign key (id_tour) references Tour(id_tour) 
+GO
+
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Sale
+add constraint FK_sale
+foreign key (id_tour) references Tour(id_tour) 
+GO
+
+
+
 
