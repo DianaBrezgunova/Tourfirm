@@ -1,1 +1,34 @@
+create table visa_fees(
+id_visa int not null primary key,
+rate varchar(20) not null ,
+country nvarchar(30) not null,
+validity varchar(5) not NULL,
+UNIQUE(id_visa))
+
+create table type_of_visa(
+id_visa  int not null primary key,
+id_client int not null,
+type  nvarchar(30) not null,
+UNIQUE(id_visa),
+UNIQUE(id_client))
+
+create table visa_issuance(
+id_client int not null PRIMARY KEY,
+id_visa int not null ,
+date_of_issue DATE not null,
+country varchar(20) not null,
+payment_amount varchar(4) not NULL,
+UNIQUE(id_visa),
+UNIQUE(id_client))
+
+create table Return_of_the_tour(
+id_return int not null primary KEY,
+date_of_return DATE not NULL,
+reason nvarchar(50) not NULL,
+id_sale nvarchar(5)not NULL,
+id_client nvarchar(5) not NULL,
+id_employee nvarchar(5) not null,
+id_tour nvarchar(5) not null,
+price nVARCHAR(10) not null,
+UNIQUE(id_return))
 
