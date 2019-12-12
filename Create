@@ -119,7 +119,7 @@ GO
 
 
 ALTER TABLE Client
-add constraint FK_orderss
+add constraint FK_orders
 foreign key (id_client) references Orders (id_client) 
 GO
 
