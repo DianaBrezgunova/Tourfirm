@@ -1,1 +1,29 @@
+SELECT *
+FROM Document
+Order BY id_insuarance
+
+
+SELECT Sum(Price)
+FROM Excursions
+
+
+SELECT Route.id_route, Route.Country, Tour.Name_tour, Tour.Price
+FROM toursDB
+INNER JOIN Tour ON Route.id_route=Tour.id_tour;
+Where Tour.Price>150.00
+
+
+SELECT * FROM Food
+WHERE id_food LIKE 'F005'
+
+
+Update Excursions
+Set [Price]=[Price]*1.5
+
+SELECT TOP 10 
+[id_client],
+[Last Name],
+[First Name],
+[id_insuarance]
+FROM [toursDB].[dbo].[Document]
 
