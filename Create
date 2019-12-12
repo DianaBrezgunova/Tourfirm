@@ -246,7 +246,10 @@ date_of_issue DATE not null,
 country varchar(20) not null,
 payment_amount varchar(4) not NULL,
 UNIQUE(id_visa),
-UNIQUE(id_client))
+UNIQUE(id_client)))
+
+
+
 
 create table Return_of_the_tour(
 id_return int not null primary KEY,
@@ -257,7 +260,9 @@ id_client nvarchar(5) not NULL,
 id_employee nvarchar(5) not null,
 id_tour nvarchar(5) not null,
 price nVARCHAR(10) not null,
-UNIQUE(id_return))
+UNIQUE(id_return)
+
+
 
 
 
