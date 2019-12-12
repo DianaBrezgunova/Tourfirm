@@ -265,33 +265,6 @@ Go
 USE [toursDB]
 GO
 
-
-CREATE TABLE [dbo].[Insurance](
-[id_insurance] [varchar](20)NOT NULL,
-[date] [date]NOT NULL
-[price] [money](5)NOT NULL,
-[duration] [varchar](3)NOT NULL,
-) ON [PRIMARY]
-
-GO
-
-ALTER TABLE Insurance
-ADD CONSTRAINT insurance_idinsurance_unique UNIQUE (id_insurance)
-GO
-
-USE [toursDB]
-GO
-
-CREATE TABLE [dbo].[Country](
-[id_country] [varchar](20)NOT NULL,
-[country] [nchar](20)NOT NULL,
-
-GO
-
-ALTER TABLE Country
-ADD CONSTRAINT Employee_idcountry_unique UNIQUE (id_country)
-GO
-=======
 SET ANSI_NULLS ON
 GO
 
@@ -301,7 +274,7 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[Document](
+CREATE TABLE [dbo].[Documents](
 [id_tour] [varchar](20)NOT NULL,
 [Last Name] [nchar](10) NOT NULL,
 [First Name] [nchar](10) NOT NULL,
@@ -311,8 +284,8 @@ CREATE TABLE [dbo].[Document](
 
 GO
 
-ALTER TABLE Document
-ADD CONSTRAINT Document_idinsuarance_unique UNIQUE (id_insuarance)
+ALTER TABLE Documents
+ADD CONSTRAINT Documents_idinsuarance_unique UNIQUE (id_insuarance)
 GO
 
 
@@ -320,40 +293,9 @@ SET ANSI_PADDING OFF
 GO
 
 
-
 USE [toursDB]
 GO
 
-
-CREATE TABLE [dbo].[Hotel](
-[id_client] [varchar](20)NOT NULL
-[name] [nchar](10)NOT NULL,
-[country] [nchar](20)NOT NULL,
-[region] [nchar]20)NOT NULL,
-[price] [money](10)NOT NULL
-) ON [PRIMARY]
-
-GO
-
-ALTER TABLE Hotel
-ADD CONSTRAINT Hotel_idclient_unique UNIQUE (id_client)
-GO
-
-USE [toursDB]
-GO
-
-CREATE TABLE [dbo].[Visa](
-[n_visa] [nchar](20)NOT NULL
-[First Name] [nchar](10)NOT NULL,
-[Last Name] [nchar](10)NOT NULL,
-[series] [varchar](10)NOT NULL,
-[number] [nchar](10)NOT NULL,
-[date] [date](8)NOT NULL,
-[valid] [varhchar](10)NOT NULL,
-[type] [nchar](10)NOT NULL,
-[country] [nchar](20),NOT NULL,
-[id_client] [varchar](20)NOT NULL,
-=======
 SET ANSI_NULLS ON
 GO
 
@@ -370,109 +312,10 @@ CREATE TABLE [dbo].[Excursions](
 [Date] [date]NOT NULL,
 [Duration] [float] NOT NULL,
 [Price] [smallmoney] NOT NULL,
-
 ) ON [PRIMARY]
 
 GO
 
-ALTER TABLE Visa
-ADD CONSTRAINT Visa_nvisa_unique UNIQUE (n_visa)
-GO
-
-USE [toursDB]
-GO
-
-CREATE TABLE [dbo].[Discount](
-[id_discount] [varchar](20)NOT NULL
-[value] [varchar](10)NOT NULL,
-[id_tour] [varchar](50)NOT NULL,
-[season] [nchar](10)NOT NULL,
-) ON [PRIMARY]
-
-GO
-
-ALTER TABLE Discount
-ADD CONSTRAINT Discount_iddiscount_unique UNIQUE (id_discount)
-GO
-
-USE [ToursBD]
-GO
-
-ALTER TABLE Insurance
-add constraint PK_insurance
-primary key(id_insurance) 
-GO
-
-ALTER TABLE Documents
-add constraint FK_insurance
-foreign key (id_insurance) references Insurance (id_insurance) 
-GO
-
-USE [ToursBD]
-GO
-
-ALTER TABLE Insurance
-add constraint PK_insurance
-primary key(id_insurance) 
-GO
-
-ALTER TABLE Documents
-add constraint FK_insurance
-foreign key (id_insurance) references Insurance (id_insurance) 
-GO
-
-USE [ToursBD]
-GO
-
-ALTER TABLE Country
-add constraint PK_country
-primary key(id_country) 
-GO
-
-ALTER TABLE Tour
-add constraint FK_country
-foreign key (id_country) references Country (id_country) 
-GO
-
-USE [ToursBD]
-GO
-
-ALTER TABLE Hotel
-add constraint PK_country
-primary key(country) 
-GO
-
-ALTER TABLE Country
-add constraint FK_country
-foreign key (country) references Hotel (country) 
-GO
-
-USE [ToursBD]
-GO
-
-ALTER TABLE Visa
-add constraint PK_type
-primary key(type) 
-GO
-
-ALTER TABLE Type of Visa
-add constraint FK_type
-foreign key (type) references Visa (type) 
-GO
-
-USE [ToursBD]
-GO
-
-ALTER TABLE Discount
-add constraint PK_idtour
-primary key(id_tour) 
-GO
-
-ALTER TABLE Tour
-add constraint FK_idtour
-foreign key (id_tour) references Discount (id_tour) 
-GO
-=======
 ALTER TABLE Excursions
 ADD CONSTRAINT Excursions_idexc_unique UNIQUE (id_exc)
 GO
@@ -576,4 +419,81 @@ GO
 
 SET ANSI_PADDING OFF
 GO
+
+
+'Зв'язки'
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Documents
+add constraint PK_documents
+primary key(id_insuarance) 
+GO
+
+
+ALTER TABLE Insuarance
+add constraint FK_documents
+foreign key (id_insuarance) references Insuarance (id_insuarance) 
+GO
+
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Excursions
+add constraint PK_excursions
+primary key(id_tour) 
+GO
+
+
+ALTER TABLE Tour
+add constraint FK_tour
+foreign key (id_tour) references Tour (id_tour) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Route
+add constraint PK_route
+primary key(id_route) 
+GO
+
+
+ALTER TABLE Tour
+add constraint FK_tour
+foreign key (id_tour) references Tour (id_tour) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Provider
+add constraint PK_provider
+primary key(id_provider) 
+GO
+
+ALTER TABLE Service
+add constraint FK_service
+foreign key (id_provider) references Service (id_provider) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Food
+add constraint PK_food
+primary key(id_food) 
+GO
+
+ALTER TABLE Tour
+add constraint FK_tour
+foreign key (id_food) references Tour (id_food) 
+GO
+
 
