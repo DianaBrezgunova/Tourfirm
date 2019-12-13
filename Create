@@ -119,7 +119,7 @@ GO
 
 
 ALTER TABLE Client
-add constraint FK_orderss
+add constraint FK_orders
 foreign key (id_client) references Orders (id_client) 
 GO
 
@@ -263,3 +263,239 @@ price nvarchar(10) not null,
 UNIQUE(id_return),
 FOREIGN KEY(id_tour) REFERENCES tour(id_tour)
 Go
+
+USE [toursDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Documents](
+[id_tour] [varchar](20)NOT NULL,
+[Last Name] [nchar](10) NOT NULL,
+[First Name] [nchar](10) NOT NULL,
+[id_client] [varchar](20) NOT NULL,
+[id_insuarance] [varchar](12) NOT NULL,
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Documents
+ADD CONSTRAINT Documents_idinsuarance_unique UNIQUE (id_insuarance)
+GO
+
+
+SET ANSI_PADDING OFF
+GO
+
+
+USE [toursDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Excursions](
+[id_exc] [varchar](10)NOT NULL,
+[id_tour] [varchar](20) NOT NULL,
+[Name] [nchar](50) NOT NULL,
+[Date] [date]NOT NULL,
+[Duration] [float] NOT NULL,
+[Price] [smallmoney] NOT NULL,
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Excursions
+ADD CONSTRAINT Excursions_idexc_unique UNIQUE (id_exc)
+GO
+
+
+SET ANSI_PADDING OFF
+GO
+
+
+
+USE [toursDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Route](
+[id_route] [varchar](10)NOT NULL,
+[id_tour] [varchar](20) NOT NULL,
+[Date] [date]NOT NULL,
+[Duration] [int] NOT NULL,
+[Transport type] [nchar](20) NOT NULL,
+[Country] [nchar](20) NOT NULL,
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Route
+ADD CONSTRAINT Route_idroute_unique UNIQUE (id_route)
+GO
+
+
+SET ANSI_PADDING OFF
+GO
+
+
+
+
+
+USE [toursDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Provider](
+[id_provider] [varchar](7)NOT NULL,
+[Name of provider] [varchar](50) NOT NULL,
+[Suppliar representative] [varchar](100)NOT NULL,
+[Phone] [char](10) NOT NULL,
+[Address] [nchar](35) NOT NULL,
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Provider
+ADD CONSTRAINT Provider_idprovider_unique UNIQUE (id_provider)
+GO
+
+
+SET ANSI_PADDING OFF
+GO
+
+
+
+USE [toursDB]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Food](
+[id_food] [varchar](4)NOT NULL,
+[Name] [varchar](40) NOT NULL,
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE Food
+ADD CONSTRAINT Food_idfood_unique UNIQUE (id_food)
+GO
+
+
+SET ANSI_PADDING OFF
+GO
+
+
+'Зв'язки'
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Documents
+add constraint PK_documents
+primary key(id_insuarance) 
+GO
+
+
+ALTER TABLE Insuarance
+add constraint FK_documents
+foreign key (id_insuarance) references Insuarance (id_insuarance) 
+GO
+
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Excursions
+add constraint PK_excursions
+primary key(id_tour) 
+GO
+
+
+ALTER TABLE Tour
+add constraint FK_tour
+foreign key (id_tour) references Tour (id_tour) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Route
+add constraint PK_route
+primary key(id_route) 
+GO
+
+
+ALTER TABLE Tour
+add constraint FK_tour
+foreign key (id_tour) references Tour (id_tour) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Provider
+add constraint PK_provider
+primary key(id_provider) 
+GO
+
+ALTER TABLE Service
+add constraint FK_service
+foreign key (id_provider) references Service (id_provider) 
+GO
+
+
+USE [ToursBD]
+GO
+
+ALTER TABLE Food
+add constraint PK_food
+primary key(id_food) 
+GO
+
+ALTER TABLE Tour
+add constraint FK_tour
+foreign key (id_food) references Tour (id_food) 
+GO
+
+
