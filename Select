@@ -44,3 +44,36 @@ WHERE Last Name=‘Шиян’
 
 DELETE 
 FROM Discount
+
+SELECT COUNT(*)
+From `visa_fees`
+
+SELECT * 
+FROM `return_of_the_tour`
+ORDER by price DESC
+
+SELECT DISTINCT country,payment_amount
+FROM `visa_issuance`
+ 
+SELECT AVG(payment_amount) as Average_price
+from `visa_issuance`
+
+SELECT MIN(price), MAX(price) 
+FROM `return_of_the_tour`
+
+SELECT COUNT(*) AS PaymentCount,
+       SUM(payment_amount) AS TotalCount,
+       AVG(payment_amount) AS AvgPrice
+FROM `visa_issuance`
+
+Select country,validity
+from `visa_fees`
+WHERE validity>15
+
+ SELECT *
+ FROM `return_of_the_tour`
+ GROUP BY date_of_return
+ HAVING price>10000
+ 
+ UPDATE `visa_issuance`
+ set payment_amount=payment_amount*1.5
