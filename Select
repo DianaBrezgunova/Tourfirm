@@ -1,4 +1,93 @@
+SELECT *
+FROM Document
+Order BY id_insuarance
 
+
+=======
+
+SELECT Sum(Price)
+FROM Excursions
+
+
+SELECT Route.id_route, Route.Country, Tour.Name_tour, Tour.Price
+FROM toursDB
+INNER JOIN Tour ON Route.id_route=Tour.id_tour;
+Where Tour.Price>150.00
+
+
+SELECT * FROM Food
+WHERE id_food LIKE 'F005'
+
+
+Update Excursions
+Set [Price]=[Price]*1.5
+
+SELECT TOP 10 
+[id_client],
+[Last Name],
+[First Name],
+[id_insuarance]
+FROM [toursDB].[dbo].[Document]
+
+SELECT price
+FROM Insurance 
+Where price=150
+
+SELECT country
+FROM Country
+WHERE country LIKE ‘Г%’
+
+Update Hotel
+
+Set [Price]=[Price]*1.3
+=======
+Set [Price]=[Price]*1.2
+
+
+SELECT Last Name
+FROM Visa
+WHERE Last Name=‘Шиян’
+
+DELETE 
+FROM Discount
+
+
+SELECT COUNT(*)
+From `visa_fees`
+
+SELECT * 
+FROM `return_of_the_tour`
+ORDER by price DESC
+
+SELECT DISTINCT country,payment_amount
+FROM `visa_issuance`
+ 
+SELECT AVG(payment_amount) as Average_price
+from `visa_issuance`
+
+SELECT MIN(price), MAX(price) 
+FROM `return_of_the_tour`
+
+SELECT COUNT(*) AS PaymentCount,
+       SUM(payment_amount) AS TotalCount,
+       AVG(payment_amount) AS AvgPrice
+FROM `visa_issuance`
+
+Select country,validity
+from `visa_fees`
+WHERE validity>15
+
+ SELECT *
+ FROM `return_of_the_tour`
+ GROUP BY date_of_return
+ HAVING price>10000
+ 
+ UPDATE `visa_issuance`
+ set payment_amount=payment_amount*1.5
+ 
+ 
+ __________________
+ 
 select last_name
 from Client
 where surname LIKE 'Л%'
@@ -18,4 +107,5 @@ SELECT id_client, id_tour, country
 FROM tour
 WHERE price = (SELECT MAX (price) 
 FROM tour)
+
 
