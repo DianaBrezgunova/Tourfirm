@@ -1,1 +1,21 @@
 
+select last_name
+from Client
+where surname LIKE 'Л%'
+
+
+select name_tour 
+from Tour
+where price>=650
+
+
+SELECT *
+FROM tour 
+WHERE price BETWEEN 800 AND 1500
+
+
+SELECT id_client, id_tour, country
+FROM tour
+WHERE price = (SELECT MAX (price) 
+FROM tour)
+
