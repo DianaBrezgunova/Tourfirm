@@ -88,6 +88,8 @@ WHERE validity>15
  
  __________________
  
+ Use TourBD
+ 
 select last_name
 from Client
 where surname LIKE 'Л%'
@@ -107,5 +109,22 @@ SELECT id_client, id_tour, country
 FROM tour
 WHERE price = (SELECT MAX (price) 
 FROM tour)
+
+
+SELECT id_employee, COUNT(quantity)
+FROM sale
+WHERE id_tour = ANY
+GROUP BY employee
+HAVING COUNT (DISTINCT quantity) >= 2
+
+Update Tour
+Set [Price]=[Price]*2
+
+
+select distinct Employee.first_name, Employee.phone, Employee.adress, Orders.id_tour
+from toursDB
+join orders on Employee.id_employee=Orders.id_orders
+where salary<(select min(salary)
+                      from employee) 
 
 
