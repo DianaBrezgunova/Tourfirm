@@ -72,7 +72,6 @@ CREATE TABLE [dbo].[Sale](
 [n_sale] [varchar](20) NOT NULL,
 [id_client] [varchar](20) NOT NULL,
 [id_tour] [varchar](50) NOT NULL,
-[date] [date] NOT NULL,
 [Quantity] [varchar](20) NOT NULL,
 [id_employee] [char](15) NOT NULL
 ) ON [PRIMARY]
@@ -95,7 +94,6 @@ CREATE TABLE [dbo].[Tour](
 [name tour] [nvarchar](50) NOT NULL,
 [name Hotel] [varchar](20) NOT NULL,
 [Price] [varchar](20) NOT NULL,
-[transpot including] [varchar](20) NULL,
 [Food] [nvarchar](50) NOT NULL,
 ) ON [PRIMARY]
  
