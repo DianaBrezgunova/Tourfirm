@@ -3,6 +3,8 @@ FROM Document
 Order BY id_insuarance
 
 
+=======
+
 SELECT Sum(Price)
 FROM Excursions
 
@@ -107,6 +109,3 @@ WHERE price = (SELECT MAX (price)
 FROM tour)
 
 
-
- 
- 
