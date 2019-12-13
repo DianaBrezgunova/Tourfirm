@@ -27,3 +27,20 @@ SELECT TOP 10
 [id_insuarance]
 FROM [toursDB].[dbo].[Document]
 
+SELECT price
+FROM Insurance 
+Where price=150
+
+SELECT country
+FROM Country
+WHERE country LIKE ‘Г%’
+
+Update Hotel
+Set [Price]=[Price]*1.2
+
+SELECT Last Name
+FROM Visa
+WHERE Last Name=‘Шиян’
+
+DELETE 
+FROM Discount
