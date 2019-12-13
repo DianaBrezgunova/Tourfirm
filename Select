@@ -82,3 +82,31 @@ WHERE validity>15
  
  UPDATE `visa_issuance`
  set payment_amount=payment_amount*1.5
+ 
+ 
+ __________________
+ 
+select last_name
+from Client
+where surname LIKE 'Л%'
+
+
+select name_tour 
+from Tour
+where price>=650
+
+
+SELECT *
+FROM tour 
+WHERE price BETWEEN 800 AND 1500
+
+
+SELECT id_client, id_tour, country
+FROM tour
+WHERE price = (SELECT MAX (price) 
+FROM tour)
+
+
+
+ 
+ 
